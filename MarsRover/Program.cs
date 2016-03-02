@@ -13,19 +13,24 @@ namespace MarsRover
         {
             //Print out line below
             Console.WriteLine("Enter Rover Position;");
+
             //Read Position Input from user separated by spaces e.g. 1 3 N
             var position = Console.ReadLine();
             var split_return = position.Split(' ');
             Int32 x = Int32.Parse(split_return[0]);
             Int32 y = Int32.Parse(split_return[1]);
             string direction = split_return[2];
+
             //Instantiate Rover Class
             Rover r = new Rover(x, y, direction);
+
             //Allow Command input e.g. LMLMLMLMM
             Console.WriteLine("Enter Command Directive");
             var directive = Console.ReadLine();
+
             //Run Rover Command
             r.executeDirective(directive);
+
             //Print Out Final Results
             Console.WriteLine(r.posx + " " + r.posy + " " + r.direction);
             Console.ReadLine();
@@ -146,103 +151,6 @@ namespace MarsRover
 
             }
         }
-        //Failed experiments Just
-        //Redacted
-        public void DropRover(String direction)
-        {
-            if (direction == "N")
-            {
-                polx = 1;
-                poly = 1;
-                posx = posx * polx;
-                posy = posy * poly;
-            }
-            else if (direction == "E")
-            {
-                polx = 1;
-                poly = -1;
-                posx = posx * polx;
-                posy = posy * poly;
-            }
-            else if (direction == "S")
-            {
-                polx = -1;
-                poly = -1;
-                posx = posx * polx;
-                posy = posy * poly;
-            }
-            else if (direction == "A")
-            {
-                polx = -1;
-                poly = 1;
-                posx = posx * polx;
-                posy = posy * poly;
-            }
-        }
-        //More Failed experiements
-        //Redacted
-        //If the solution is less elegant than it should be your not thinking well enough
-        public void move()
-        {
-            //Heading North
-            if (polx > 0 && poly > 0)
-            {
-                poly += 1;
-
-            }//Heading West
-            else if (polx < 0 && poly > 0)
-            {
-                polx -= 1;
-            }//Heading South
-            else if (polx < 0 && poly < 0)
-            {
-                poly -= 1;
-            }//Heading East
-            else if (polx > 0 && poly < 0)
-            {
-                polx += 1;
-            }
-
-        }
-        //Another Failed Experiment
-        public void direct(String directive)
-        {
-            if (posx > 0 && prevx > 0)
-            {
-                polx = -1;
-                prevx = posx;
-                posx = posx * polx;
-            }
-            else if (posx < 0 && prevx > 0)
-            {
-                prevx = posx;
-            }
-            if (posx < 0 && prevx < 0)
-            {
-                polx = -1;
-                prevx = posx;
-                posx = posx * polx;
-            }
-            else if (posx > 0 && prevx < 0)
-            {
-                prevx -= prevx;
-            }
-            if (posy > 0 && prevy < 0)
-            {
-                poly = -1;
-                prevy = posy;
-                posy = posy * poly;
-            }
-            else if (posy < 0 && prevy > 0)
-            {
-                prevy -= prevy;
-            }
-            else if (posy < 0 && prevy < 0)
-            {
-                poly = -1;
-                prevy = posy;
-                posy = posy * poly;
-            }
-        }
+        
     }
 }
